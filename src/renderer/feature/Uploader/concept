@@ -1,0 +1,69 @@
+Какая-то штука, которая в БД позволит записывать такие значение, которые можно
+будет использовать для галлерери.
+Например, в БД будут храниться объекты вида:
+
+// images
+{
+  id: 'ts3',
+  type: 'image',
+  name: 'shaesnowts011613-p01_101.jpg',
+  src: ts4,
+  width: 2001,
+  height: 3000,
+},
+
+// catalogs
+{
+  type: 'catalog',
+  slug: 'nubiles-2',
+  title: 'nubiles 2',
+  content: s2Images.map((it) => it.id),
+}
+
+
+Глобально, систему можно будет разделить на следующие части:
+// images source,
+// uploaded image info source
+// image viewer
+Это, если во viewer нужно будет напряму вставлять изображение. Объект изображения.
+Если там будет только ссылка, через которую каким-то магическим образом можно
+будет отобразить изображение, то image source не нужен. Вернее, его не нужно
+описывать в коде.
+
+image source + юайная часть, которая позволяет по той информации (сейчас - по ссылке)
+вывести нужное изображение на экран.
+т.е. это можно единым модулем представить
+// ???
+//   ImageSource
+//   ImageViewer
+И image info здесь - интерфейс общения source'a и viewer'а. Т.е. тоже часть этой схемы.
+Тоже часть модуля.
+
+ImageSource {
+  getReactImage(info: IImageInfo): React.Element;
+}
+
+ServerImageSource {
+  getReactImage(url: string) {
+    return <img src={url} />;
+  }
+}
+
+Если, всё-таки, обстрогировоца от img. То можно функцию создать, которая будет
+преобразовывать что-то в img или любой другой react-элемент. Что-то здесь может
+быть получено асинхронно, а вот сам элемент создаётся синхронно.
+Т.е. это reactNodeCreator(...): React.Element
+Т.е. через image source получаем асинхронно какие-то данные.
+Затем в reactNodeCreator'е эти данные преобразовываем в реакт-элемент.
+
+Например, цепочка такая:
+- View передаёт в react элемент-изображение
+- Этот элемент создан в reactNodeCreator(..)
+- Данные для его создания получены в ImageSource
+- А данные для ImageSource получены в ImageInfoSource
+
+const imageInfo = await imageInfoSource.getSomeImages(); // это сервис сейчас
+const image = await imageSource.get(imageInfo);
+const imageNode = reactNodeCreator.create(image);
+return <div>{imageNode}</div>
+

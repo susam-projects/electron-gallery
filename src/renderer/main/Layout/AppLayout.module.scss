@@ -1,0 +1,27 @@
+/* cross-elements styles */
+
+$sidebarWidth: 265px;
+
+.sidebar {
+  position: fixed;
+  width: $sidebarWidth;
+  box-sizing: border-box;
+  height: 100%;
+  box-shadow: 8px 0 6px -6px rgb(214, 216, 230);
+  transition: left 0.3s;
+}
+
+.page {
+  margin-left: $sidebarWidth;
+  min-height: 100vh;
+}
+
+/* elements inner styles */
+
+.rootContent {
+  background-color: #FBFBFB;
+}
+
+.pageContent {
+  padding: 15px;
+}

@@ -1,0 +1,25 @@
+@import-normalize;
+
+@font-face {
+  font-family: 'caviar_dreamsbold';
+  src: url(./font/Caviar_Dreams_Bold-webfont.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'caviar_dreamsregular';
+  src: url('./font/CaviarDreams-webfont.ttf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
+}

@@ -1,0 +1,36 @@
+.card {
+  background: #ffffff;
+  box-shadow: 0px 0px 8px #A7A7A7;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 10px;
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  p {
+    color: #666;
+    font-size: 14px;
+    padding: 10px 10px 1px 10px;
+    font-family: 'caviar_dreamsregular';
+    text-transform: uppercase;
+
+    img {
+      vertical-align: middle;
+      padding: 0px 5px;
+    }
+  }
+}
+
+.icons {
+  float: right;
+  span {
+    display: inline-block;
+  }
+}
+
+.activeElement {
+  cursor: pointer;
+}

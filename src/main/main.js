@@ -1,6 +1,8 @@
 /*global MAIN_WINDOW_WEBPACK_ENTRY*/
 import { app, BrowserWindow } from 'electron';
-import installExtension, { REACT_DEVELOPER_TOOLS } from 'iyobo-electron-devtools-installer';
+import installExtension, {
+    REACT_DEVELOPER_TOOLS,
+} from 'iyobo-electron-devtools-installer';
 
 installExtension(REACT_DEVELOPER_TOOLS)
     .then((name) => console.log(`Added Extension:  ${name}`))

@@ -7,15 +7,32 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:jsx-control-statements/recommended",
     "plugin:prettier/recommended",
     "plugin:import/errors",
     "plugin:import/warnings"
   ],
+  "plugins": [
+    "react",
+    "jsx-control-statements",
+    "prettier",
+    "import"
+  ],
+  "rules": {
+    "react/jsx-no-undef": [2, {"allowGlobals": true}]
+  },
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
+    }
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js",".jsx"]
+      }
     }
   }
 }
