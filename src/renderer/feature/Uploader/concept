@@ -89,4 +89,6 @@ Storage. C ним работает и gallery, и uploader. Он позволя�
 feature/Gallery/Read    (Gallery)
 feature/Gallery/Write   (Uploader)
 feature/Gallery/Data    (Storage)
-
+Gallery - не только read. Там и update есть. Да и delete тоже (может быть; ну
+скорее всего - да). В Uploader'е - да, только write.
+Ок. Тогда, всё-таки: gallery, uploader и storage.
