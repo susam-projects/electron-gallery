@@ -6,7 +6,7 @@ class Storage {
     }
 
     getFavorites() {
-        return [...favCatalog];
+        return favCatalog;
     }
 
     getCollections() {
