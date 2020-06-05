@@ -8,11 +8,14 @@ export function HomeLink({ link, currentUrl }) {
   return (
     <li
       className={classnames({
+        [styles.menuItem]: true,
         [styles.home]: true,
         [styles.active]: currentUrl === link,
       })}
     >
-      <Link to={link}>Home</Link>
+      <Link to={link} className={styles.menuLink}>
+        Home
+      </Link>
     </li>
   );
 }
@@ -25,11 +28,14 @@ export function FavoritesLink({ link, currentUrl }) {
   return (
     <li
       className={classnames({
+        [styles.menuItem]: true,
         [styles.favorites]: true,
         [styles.active]: currentUrl === link,
       })}
     >
-      <Link to={link}>Favorites</Link>
+      <Link to={link} className={styles.menuLink}>
+        Favorites
+      </Link>
     </li>
   );
 }
@@ -42,11 +48,14 @@ export function ImagesLink({ title, link, currentUrl }) {
   return (
     <li
       className={classnames({
+        [styles.menuItem]: true,
         [styles.photo]: true,
         [styles.active]: currentUrl === link,
       })}
     >
-      <Link to={link}>{title}</Link>
+      <Link to={link} className={styles.menuLink}>
+        {title}
+      </Link>
     </li>
   );
 }

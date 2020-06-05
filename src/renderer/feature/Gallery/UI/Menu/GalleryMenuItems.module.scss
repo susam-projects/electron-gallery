@@ -9,3 +9,28 @@
 .photo {
   background-image:url(./p-icon.png);
 }
+
+.menuItem {
+  display: block;
+  padding: 2px 0 35px 40px;
+  background-repeat: no-repeat;
+  font-size: 1.4em;
+  cursor: pointer;
+  transition: all 0.15s ease-out;
+
+  color: rgba(139, 139, 139, 0.71);
+  &.active {
+    color: #613854;
+  }
+}
+
+.menuLink {
+  display: block;
+  background-repeat: no-repeat;
+  font-size: 1em;
+  text-decoration: none;
+}
+
+.menuLink:hover {
+  color: #613854;
+}

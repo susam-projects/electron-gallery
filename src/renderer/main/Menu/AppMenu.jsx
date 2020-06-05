@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './AppMenu.module.scss';
 
 function AppMenu({ children }) {
-  return <ol className={styles.filters}>{children}</ol>;
+  return <ol className={styles.appMenu}>{children}</ol>;
 }
 
 AppMenu.propTypes = {
