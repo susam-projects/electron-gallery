@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './font/CaviarDreams-webfont.ttf';
 import './font/Caviar_Dreams_Bold-webfont.ttf';
 import './index.scss';
-import App from './main/App';
+import App from './module/Main/App';
 
 ReactDOM.render(
   <React.StrictMode>

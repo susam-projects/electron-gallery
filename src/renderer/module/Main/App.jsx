@@ -6,9 +6,9 @@ import {
   Switch,
 } from 'react-router-dom';
 import AppLayout from './Layout/AppLayout';
-import GalleryPage from '../feature/Gallery/UI/Page/GalleryPage';
+import GalleryPage from '../Gallery/UI/Page/GalleryPage';
 import AppMenu from './Menu/AppMenu';
-import GalleryMenu from '../feature/Gallery/UI/Menu/GalleryMenu';
+import GalleryMenu from '../Gallery/UI/Menu/GalleryMenu';
 
 function App() {
   return (
