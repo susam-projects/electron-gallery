@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import DropZone from '../../../Common/UI/Component/DropZone/DropZone';
-import styles from './UploaderPageContent.module.scss';
+import styles from './CollectionCreatorPageContent.module.scss';
 
-function UploaderPageContent({
+function CollectionCreatorPageContent({
   collectionName,
   onCollectionNameChanged,
   onFilesSelected,
@@ -38,7 +38,11 @@ function UploaderPageContent({
         prompt={'Click or drag some images'}
       />
 
-      <button onClick={onCreateCollectionClick} className={styles.createButton}>
+      <button
+        onClick={onCreateCollectionClick}
+        className={styles.createButton}
+        disabled={isLoading}
+      >
         Create collection
       </button>
 
@@ -53,7 +57,7 @@ function UploaderPageContent({
   );
 }
 
-UploaderPageContent.propTypes = {
+CollectionCreatorPageContent.propTypes = {
   collectionName: PropTypes.string,
   onCollectionNameChanged: PropTypes.func,
   onFilesSelected: PropTypes.func,
@@ -62,4 +66,4 @@ UploaderPageContent.propTypes = {
   isLoading: PropTypes.bool,
 };
 
-export default UploaderPageContent;
+export default CollectionCreatorPageContent;

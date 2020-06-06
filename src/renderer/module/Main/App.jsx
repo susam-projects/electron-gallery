@@ -10,8 +10,8 @@ import AppMenu from './Menu/AppMenu';
 import AppMenuSeparator from './Menu/AppMenuSeparator';
 import GalleryMenu from '../Gallery/UI/Menu/GalleryMenu';
 import GalleryPage from '../Gallery/UI/Page/GalleryPage';
-import UploaderMenu from '../Uploader/UI/Menu/UploaderMenu';
-import UploaderPage from '../Uploader/UI/Page/UploaderPage';
+import CollectionCreatorMenu from '../CollectionCreator/UI/Menu/CollectionCreatorMenu';
+import CollectionCreatorPage from '../CollectionCreator/UI/Page/CollectionCreatorPage';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
       <AppLayout
         menu={
           <AppMenu>
-            <UploaderMenu routePrefix="/upload" />
+            <CollectionCreatorMenu routePrefix="/upload" />
             <AppMenuSeparator />
             <GalleryMenu routePrefix="/gallery" />
           </AppMenu>
@@ -27,7 +27,7 @@ function App() {
         page={
           <Switch>
             <Route path="/upload">
-              <UploaderPage />
+              <CollectionCreatorPage />
             </Route>
             <Route path="/gallery">
               <GalleryPage />

@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react';
-import UploaderPageContent from '../Layout/UploaderPageContent';
-import uploaderService from '../../Service/UploaderService';
+import CollectionCreatorPageContent from '../Layout/CollectionCreatorPageContent';
+import uploaderService from '../../Service/CollectionCreatorService';
 
-function UploaderPage() {
+function CollectionCreatorPage() {
   const [collectionName, setCollectionName] = useState('');
   const [collectionImages, setCollectionImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -41,7 +41,7 @@ function UploaderPage() {
   }, [collectionName, collectionImages]);
 
   return (
-    <UploaderPageContent
+    <CollectionCreatorPageContent
       collectionName={collectionName}
       onCollectionNameChanged={onCollectionNameChanged}
       onCreateCollectionClick={onCreateCollectionClick}
@@ -52,4 +52,4 @@ function UploaderPage() {
   );
 }
 
-export default UploaderPage;
+export default CollectionCreatorPage;

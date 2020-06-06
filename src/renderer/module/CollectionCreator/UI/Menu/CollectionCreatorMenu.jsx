@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import styles from './UploaderMenu.module.scss';
+import styles from './CollectionCreatorMenu.module.scss';
 import * as classnames from 'classnames';
 
-function UploaderMenu({ routePrefix: base }) {
+function CollectionCreatorMenu({ routePrefix: base }) {
   return (
     <>
       <li className={classnames(styles.menuItem, styles.upload)}>
@@ -16,8 +16,8 @@ function UploaderMenu({ routePrefix: base }) {
   );
 }
 
-UploaderMenu.propTypes = {
+CollectionCreatorMenu.propTypes = {
   routePrefix: PropTypes.string,
 };
 
-export default UploaderMenu;
+export default CollectionCreatorMenu;
