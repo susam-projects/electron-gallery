@@ -26,7 +26,10 @@ function DropZone({ classes = {}, accept, onSelect, prompt }) {
 
 DropZone.propTypes = {
   className: PropTypes.string,
-  accept: PropTypes.string,
+  accept: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.string,
+  ]),
   onSelect: PropTypes.func,
   prompt: PropTypes.string,
 };

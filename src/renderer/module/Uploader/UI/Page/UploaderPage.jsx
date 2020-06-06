@@ -1,9 +1,11 @@
 import React, { useCallback, useState } from 'react';
 import UploaderPageContent from '../Layout/UploaderPageContent';
+import uploaderService from '../../Service/UploaderService';
 
 function UploaderPage() {
   const [collectionName, setCollectionName] = useState('');
   const [collectionImages, setCollectionImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onCollectionNameChanged = useCallback((name) => {
     setCollectionName(name);
@@ -24,11 +26,18 @@ function UploaderPage() {
       return;
     }
 
-    console.log(
-      'need to create a collection',
-      collectionName,
-      collectionImages,
-    );
+    setIsLoading(true);
+    uploaderService
+      .createCollection(collectionName, collectionImages)
+      .then(() => {
+        console.log('success');
+      })
+      .catch(() => {
+        console.log('error');
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [collectionName, collectionImages]);
 
   return (
@@ -38,6 +47,7 @@ function UploaderPage() {
       onCreateCollectionClick={onCreateCollectionClick}
       fileList={collectionImages}
       onFilesSelected={onFilesSelect}
+      isLoading={isLoading}
     />
   );
 }

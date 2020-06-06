@@ -1,8 +1,11 @@
 /*global MAIN_WINDOW_WEBPACK_ENTRY*/
+import 'regenerator-runtime/runtime';
 import { app, BrowserWindow } from 'electron';
 import installExtension, {
     REACT_DEVELOPER_TOOLS,
 } from 'electron-devtools-installer';
+import './images/image-size';
+import './images/get-images';
 
 app.whenReady().then(() => {
     installExtension(REACT_DEVELOPER_TOOLS)
@@ -23,6 +26,9 @@ const createWindow = () => {
     const mainWindow = new BrowserWindow({
         width: 1600,
         height: 900,
+        webPreferences: {
+            nodeIntegration: true,
+        },
     });
 
     // and load the index.html of the app.

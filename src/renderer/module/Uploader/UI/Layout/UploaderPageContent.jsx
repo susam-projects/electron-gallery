@@ -9,10 +9,11 @@ function UploaderPageContent({
   onFilesSelected,
   onCreateCollectionClick,
   fileList,
+  isLoading,
 }) {
   const onCollectionNameInputChange = useCallback(
     (event) => {
-      onCollectionNameChanged(event.target.value);
+      onCollectionNameChanged(event?.target?.value);
     },
     [onCollectionNameChanged],
   );
@@ -54,10 +55,11 @@ function UploaderPageContent({
 
 UploaderPageContent.propTypes = {
   collectionName: PropTypes.string,
-  onCollectionNameChanged: PropTypes.string,
+  onCollectionNameChanged: PropTypes.func,
   onFilesSelected: PropTypes.func,
   onCreateCollectionClick: PropTypes.func,
   fileList: PropTypes.arrayOf(PropTypes.object),
+  isLoading: PropTypes.bool,
 };
 
 export default UploaderPageContent;
