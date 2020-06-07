@@ -8,8 +8,6 @@ function CollectionCreatorMenu({ routePrefix: base }) {
   const location = useLocation();
   const currentUrl = location.pathname;
 
-  console.log(currentUrl, base);
-
   return (
     <>
       <li

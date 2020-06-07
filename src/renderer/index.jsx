@@ -12,5 +12,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
-
-console.log('log from index');
