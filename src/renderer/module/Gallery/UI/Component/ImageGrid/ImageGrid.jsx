@@ -4,6 +4,13 @@ import StackGrid from 'react-stack-grid';
 import ImageCard from '../ImageCard/ImageCard';
 
 function ImageGrid({ images, onClick = () => {} }) {
+  const preparedImages = images.map((it) => {
+    if (typeof it === 'string') {
+      return { name: '01.jpg', src: it };
+    }
+    return it;
+  });
+
   return (
     <StackGrid
       columnWidth={300}
@@ -14,11 +21,11 @@ function ImageGrid({ images, onClick = () => {} }) {
       monitorImagesLoaded
       vendorPrefix
     >
-      <For each="imagePath" index="i" of={images}>
+      <For each="image" index="i" of={preparedImages}>
         <ImageCard
-          key={imagePath}
-          image={imagePath}
-          title="01.jpg"
+          key={image.src}
+          image={image.src}
+          title={image.name}
           onClick={() => onClick(i)}
         />
       </For>
@@ -27,7 +34,15 @@ function ImageGrid({ images, onClick = () => {} }) {
 }
 
 ImageGrid.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  images: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        src: PropTypes.string,
+      }),
+    ),
+  ]).isRequired,
   onClick: PropTypes.func,
 };
 

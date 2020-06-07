@@ -1,5 +1,6 @@
 import * as log from 'loglevel';
 import storage from '../../Storage/Storage';
+import { ipcRenderer } from 'electron';
 
 const logger = log.getLogger('images-service');
 logger.setLevel(log.levels.DEBUG);
@@ -23,7 +24,7 @@ class ImageService {
         return storage.getCollections();
     }
 
-    getPhotoCollectionImages(collectionSlug) {
+    async getPhotoCollectionImages(collectionSlug) {
         logger.debug('getting content of collection', collectionSlug);
         const catalogsInfo = storage.getCollections();
         const allImagesInfo = storage.getAllImages();
@@ -31,8 +32,9 @@ class ImageService {
             (it) => it.slug === collectionSlug,
         )[0];
         if (!catalog) return [];
-        return allImagesInfo.filter((image) =>
-            catalog.content.includes(image.id),
+
+        return Promise.resolve(
+            allImagesInfo.filter((image) => catalog.content.includes(image.id)),
         );
     }
 }

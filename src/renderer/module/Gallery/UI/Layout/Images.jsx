@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ImageViewer from '../Component/ImageViewer/ImageViewer';
 import ImageGrid from '../Component/ImageGrid/ImageGrid';
 
-function Images({ srcSet }) {
+function Images({ srcSet, imageSet }) {
   const [selectedImage, setSelectedImage] = useState(0);
   const [isViewerOpen, setViewerIsOpen] = useState(false);
 
@@ -19,9 +19,9 @@ function Images({ srcSet }) {
 
   return (
     <>
-      <ImageGrid images={srcSet} onClick={openViewer} />
+      <ImageGrid images={srcSet || imageSet} onClick={openViewer} />
       <ImageViewer
-        images={srcSet}
+        images={srcSet || imageSet}
         selectedImage={selectedImage}
         isOpen={isViewerOpen}
         onClose={closeViewer}
@@ -32,6 +32,7 @@ function Images({ srcSet }) {
 
 Images.propTypes = {
   srcSet: PropTypes.arrayOf(PropTypes.string),
+  imageSet: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Images;

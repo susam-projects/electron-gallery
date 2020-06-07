@@ -17,9 +17,12 @@ function ImageViewer({ images, selectedImage, onClose, isOpen }) {
               }),
             }}
             currentIndex={selectedImage}
-            views={images.map((image) => ({
-              src: image,
-            }))}
+            views={images.map((image) => {
+              if (typeof image === 'string') {
+                return { title: '01.jpg', src: image };
+              }
+              return { title: image.name, src: image.src };
+            })}
           />
         </Modal>
       </If>
@@ -29,7 +32,15 @@ function ImageViewer({ images, selectedImage, onClose, isOpen }) {
 
 ImageViewer.propTypes = {
   isOpen: PropTypes.bool,
-  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  images: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        src: PropTypes.string,
+      }),
+    ),
+  ]).isRequired,
   selectedImage: PropTypes.number,
   onClose: PropTypes.func,
 };

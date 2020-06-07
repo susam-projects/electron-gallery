@@ -1,11 +1,11 @@
 /*global MAIN_WINDOW_WEBPACK_ENTRY*/
 import 'regenerator-runtime/runtime';
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, protocol } from 'electron';
+import { normalize } from 'path';
 import installExtension, {
     REACT_DEVELOPER_TOOLS,
 } from 'electron-devtools-installer';
-import './images/image-size';
-import './images/get-images';
+import './image-size';
 
 app.whenReady().then(() => {
     installExtension(REACT_DEVELOPER_TOOLS)
@@ -40,11 +40,6 @@ const createWindow = () => {
     }
 };
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
-
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
     // On OS X it is common for applications and their menu bar
@@ -62,5 +57,23 @@ app.on('activate', () => {
     }
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
+app.whenReady().then(() => {
+    protocol.registerFileProtocol(
+        'gallery',
+        (request, callback) => {
+            const url = request.url.substr(9);
+            callback({ path: normalize(url) });
+        },
+        (error) => {
+            if (error) {
+                console.error('[ERROR] error registering gallery:// protocol!');
+            } else {
+                console.log(
+                    '[INFO] protocol gallery:// successfully registered',
+                );
+            }
+        },
+    );
+
+    createWindow();
+});

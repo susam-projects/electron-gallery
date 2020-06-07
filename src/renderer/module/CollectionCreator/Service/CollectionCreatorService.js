@@ -20,7 +20,7 @@ class CollectionCreatorService {
 
         const imagesInfo = imageSizes.map((it) => ({
             name: basename(it.path),
-            path: it.path,
+            src: `gallery://${it.path}`,
             width: it.width,
             height: it.height,
         }));
@@ -31,16 +31,6 @@ class CollectionCreatorService {
             title: name,
             content: imageIds,
         });
-
-        // const image = await ipcRenderer.invoke('get-image', imagePaths[0]);
-
-        // const image = await ipcRenderer.invoke(
-        //     'get-images',
-        //     images.map((imageFile) => ({
-        //         name: imageFile.path,
-        //         path: imageFile.path,
-        //     })),
-        // );
     }
 }
 

@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Images from '../Layout/Images';
 import { useParams } from 'react-router-dom';
 import imageService from '../../Service/ImageService';
 
 function PhotoCollectionGallery() {
   const { slug } = useParams();
+  const [images, setImages] = useState([]);
 
-  // use state
-  const images = imageService
-    .getPhotoCollectionImages(slug)
-    .map((it) => it.src);
-  return <Images srcSet={images} />;
+  useEffect(() => {
+    async function getImages() {
+      const collectionImages = await imageService.getPhotoCollectionImages(
+        slug,
+      );
+      setImages(collectionImages);
+    }
+    getImages();
+  }, [slug]);
+
+  return <Images imageSet={images} />;
 }
 
 export default PhotoCollectionGallery;
