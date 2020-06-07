@@ -36,6 +36,8 @@ function CollectionCreatorPage() {
         console.log('error');
       })
       .finally(() => {
+        setCollectionName('');
+        setCollectionImages([]);
         setIsLoading(false);
       });
   }, [collectionName, collectionImages]);
